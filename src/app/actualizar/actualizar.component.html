@@ -1,0 +1,23 @@
+<div class="actualizar-container animate__animated animate__fadeIn">
+  <div class="card p-4 shadow">
+    <h3 class="text-center mb-4">Actualizar Perfil</h3>
+
+    <form (ngSubmit)="actualizarPerfil()">
+      <input class="form-control mb-3" placeholder="Cédula" type="number" [(ngModel)]="usuario.cedula" name="cedula" required />
+      <input class="form-control mb-3" placeholder="Nombre" type="text" [(ngModel)]="usuario.nombre" name="nombre" required />
+      <input class="form-control mb-3" placeholder="Apellido" type="text" [(ngModel)]="usuario.apellido" name="apellido" required />
+      <input class="form-control mb-3" placeholder="Email" type="email" [(ngModel)]="usuario.email" name="email" required />
+      <input class="form-control mb-3" placeholder="Teléfono" type="number" [(ngModel)]="usuario.telefono" name="telefono" required />
+      <input class="form-control mb-3" placeholder="Contraseña" type="text" [(ngModel)]="usuario.contrasena" name="contrasena" required />
+
+      <div class="d-flex justify-content-between mt-3">
+        <button class="btn btn-secondary" (click)="volver()">← Atrás</button>
+        <button type="submit" class="btn btn-success">Actualizar</button>
+      </div>
+    </form>
+
+    <div *ngIf="mensaje" class="alert alert-info mt-3 text-center">
+      {{ mensaje }}
+    </div>
+  </div>
+</div>

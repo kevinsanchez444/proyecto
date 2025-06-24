@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.banner {
+background-color: #FFFFFF; 
+padding: 3rem 1rem;
+display: flex;
+justify-content: center;
+align-items: center;
+border-bottom: 3px solid #007BFF;
+}
+
+.titulo-tienda {
+font-family: 'Playfair Display', serif;
+font-size: 4.5rem;
+font-weight: 700;
+color: #000000;
+letter-spacing: 2px;
+margin: 0;
+}
+.navbar {
+border-top: 2px solid #00FFFF; 
+border-bottom: 2px solid #800080; 
+}
+
+.navbar .btn-outline-dark {
+color: #000000;
+border-color: #000000;
+}
+
+.navbar .btn-outline-dark:hover {
+background-color: #FF0000; 
+color: #FFFFFF;
+border-color: #FF0000;
+}
+
+footer {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}

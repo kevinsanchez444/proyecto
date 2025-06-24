@@ -1,0 +1,39 @@
+<div class="login-container animate__animated animate__fadeInDown">
+  <div class="card p-4 shadow-lg">
+    <h3 class="text-center mb-4">Iniciar Sesión</h3>
+
+    <form (ngSubmit)="iniciarSesion()">
+      <div class="form-group mb-3">
+        <label for="correo">Correo:</label>
+        <input
+          type="email"
+          [(ngModel)]="usuario.email"
+          name="correo"
+          class="form-control"
+          required
+          placeholder="Ingresa tu correo electrónico"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="contrasena">Contraseña:</label>
+        <input
+          type="password"
+          [(ngModel)]="usuario.contrasena"
+          name="contrasena"
+          class="form-control"
+          required
+          placeholder="Ingresa tu contraseña"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+    </form>
+
+    <button class="btn btn-link mt-2 w-100" (click)="irARegistro()">¿No tienes cuenta? Regístrate</button>
+
+    <div *ngIf="mensaje" class="alert alert-info mt-3 text-center">
+      {{ mensaje }}
+    </div>
+  </div>
+</div>

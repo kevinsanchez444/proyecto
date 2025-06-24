@@ -1,0 +1,32 @@
+.eliminar-container {
+min-height: 100vh;
+width: 100%;
+background: linear-gradient(-45deg, #ffe6e6, #fffafa, #fdecea, #fdf5f5);
+background-size: 400% 400%;
+animation: gradientBG 10s ease infinite;
+
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 20px;
+}
+
+.card {
+width: 100%;
+max-width: 450px;
+border-radius: 16px;
+background-color: white;
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes gradientBG {
+0% {
+    background-position: 0% 50%;
+}
+50% {
+    background-position: 100% 50%;
+}
+100% {
+    background-position: 0% 50%;
+}
+}

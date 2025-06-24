@@ -1,0 +1,117 @@
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<div class="banner text-center py-4">
+  <h1 class="titulo-tienda">Ryder Lujos</h1>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+  <div class="container-fluid justify-content-between">
+    <span class="navbar-brand mb-0 h4 text-black">Bienvenido</span>
+
+    <div class="text-center mt-5">
+      <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#modalPedido">
+        <i class="bi bi-cart-plus-fill"></i> Generar Pedido
+      </button>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-outline-dark dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-person-circle"></i> Perfil
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+        <li><a class="dropdown-item" [routerLink]="'/historial'">Historial de Pedidos</a></li>
+        <li><a class="dropdown-item text-primary" [routerLink]="'/actualizar'">Actualizar Perfil</a></li>
+        <li><a class="dropdown-item text-danger" [routerLink]="'/eliminar'">Eliminar Perfil</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><button class="dropdown-item text-dark" (click)="cerrarSesion()">Cerrar Sesión</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="modal fade" id="modalPedido" tabindex="-1" aria-labelledby="modalPedidoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="modalPedidoLabel">Datos para el Pedido</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body">
+        <form (ngSubmit)="enviarPedido()" #formPedido="ngForm">
+          <div class="form-group mb-3">
+            <label>Dirección</label>
+            <input type="text" [(ngModel)]="direccion" name="direccion" class="form-control" required>
+          </div>
+          <div class="form-group mb-3">
+            <label>Ciudad</label>
+            <input type="text" [(ngModel)]="ciudad" name="ciudad" class="form-control" required>
+          </div>
+          <div class="form-group mb-3">
+            <label>Referencia</label>
+            <input type="text" [(ngModel)]="referencia" name="referencia" class="form-control" required>
+          </div>
+          <div *ngIf="mensaje" class="alert alert-info mt-2 text-center">
+            {{ mensaje }}
+          </div>
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success">Confirmar Pedido</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="resumenPedido" class="container mt-4">
+  <div class="card shadow" style="max-width: 600px; margin: auto;">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">Resumen del Pedido</h5>
+    </div>
+    <div class="card-body">
+      <p><strong>Fecha:</strong> {{ resumenPedido.fechaPedido | date:'short' }}</p>
+      <p><strong>Dirección:</strong> {{ resumenPedido.direccion }}</p>
+      <p><strong>Ciudad:</strong> {{ resumenPedido.ciudad }}</p>
+      <p><strong>Referencia:</strong> {{ resumenPedido.referencia }}</p>
+      <p><strong>Estado:</strong> {{ resumenPedido.estado }}</p>
+      <p><strong>Total:</strong> ${{ resumenPedido.total | number:'1.0-0' }}</p>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-dark text-white pt-4 pb-2 mt-5">
+  <div class="container text-center text-md-start">
+    <div class="row">
+
+      <div class="col-md-4">
+        <h5 class="text-uppercase">Mi Sitio</h5>
+        <p>Tu texto de presentación o eslogan.</p>
+      </div>
+
+      <div class="col-md-4">
+        <h5 class="text-uppercase">Enlaces</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white text-decoration-none">Inicio</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Acerca de</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Servicios</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4">
+        <h5 class="text-uppercase">Contacto</h5>
+        <p>Email: ejemplocorreo.com</p>
+        <p>Tel: +57 300 000 0000</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-3">
+    &copy; 2025 Mi Sitio Web. Todos los derechos reservados.
+  </div>
+</footer>
