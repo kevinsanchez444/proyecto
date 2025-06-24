@@ -2,6 +2,8 @@ package com.example.demo.Modelo;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,10 +31,11 @@ public class Usuario {
     @Column(name="telefono", nullable=false,unique=true)
     private Long telefono;
 
-    @Column(name="contraseña", length=10, nullable=false, unique=true)
-    private String contraseña;
+    @Column(name="contrasena", length=10, nullable=false, unique=true)
+    private String contrasena;
 
     @OneToMany(mappedBy = "idUsuario", cascade = {CascadeType.ALL})
+    @JsonIgnore
     private List<pedidos> pedidos;
 
     @OneToOne(mappedBy = "idUsuario", cascade = {CascadeType.ALL})
@@ -44,7 +47,7 @@ public class Usuario {
 	}
 
 
-	public Usuario(Long cedula, String nombre, String apellido, String email, Long telefono, String contraseña,
+	public Usuario(Long cedula, String nombre, String apellido, String email, Long telefono, String contrasena,
 			List<carrito> carritos, List<com.example.demo.Modelo.pedidos> pedidos) {
 		super();
 		this.cedula = cedula;
@@ -52,7 +55,7 @@ public class Usuario {
 		this.apellido = apellido;
 		this.email = email;
 		this.telefono = telefono;
-		this.contraseña = contraseña;
+		this.contrasena = contrasena;
 		
 		this.pedidos = pedidos;
 	}
@@ -108,13 +111,13 @@ public class Usuario {
 	}
 
 
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasena() {
+		return contrasena;
 	}
 
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasena(String contraseña) {
+		this.contrasena = contraseña;
 	}
 
 

@@ -1,8 +1,7 @@
 package com.example.demo.Modelo;
 
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+
 import jakarta.persistence.Table;
 
 @Entity
@@ -39,56 +38,46 @@ public class productos {
     @ManyToOne
     @JoinColumn(name="idAdministrador", referencedColumnName="idAdministrador")
     private administrador administrador;
-
-   
-    @OneToMany(mappedBy = "idCarrito", cascade = {CascadeType.ALL})
-    private List<carrito> carritos;
-
-   
-    @OneToMany(mappedBy = "idDetallePedido", cascade = {CascadeType.ALL})
-    private List<detallePedido> detallesPedidos;
-
- 
+    
 	public productos() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public productos(Long idProductos, String nombre, String descripcion, int precio, int cantidad,String imagen,
-			com.example.demo.Modelo.administrador administrador, List<carrito> carritos,
-			List<detallePedido> detallesPedidos) {
+
+
+
+	public productos(Long idProductos, String nombre, String descripcion, int precio, int cantidad, String imagen,
+			com.example.demo.Modelo.administrador administrador) {
 		super();
 		this.idProductos = idProductos;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
 		this.cantidad = cantidad;
+		this.imagen = imagen;
 		this.administrador = administrador;
-		this.carritos = carritos;
-		this.detallesPedidos = detallesPedidos;
-		this.imagen=imagen;
 	}
 
 
-	public Long getId() {
+
+
+
+	public Long getIdProductos() {
 		return idProductos;
 	}
 
 
-	public String getImagen() {
-		return imagen;
-	}
 
 
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
 
-
-	public void setId(Long idProductos) {
+	public void setIdProductos(Long idProductos) {
 		this.idProductos = idProductos;
 	}
+
+
+
 
 
 	public String getNombre() {
@@ -96,9 +85,15 @@ public class productos {
 	}
 
 
+
+
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+
+
 
 
 	public String getDescripcion() {
@@ -106,9 +101,15 @@ public class productos {
 	}
 
 
+
+
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+
+
 
 
 	public int getPrecio() {
@@ -116,9 +117,15 @@ public class productos {
 	}
 
 
+
+
+
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
+
+
+
 
 
 	public int getCantidad() {
@@ -126,9 +133,31 @@ public class productos {
 	}
 
 
+
+
+
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
+
+
+
+
+
+	public String getImagen() {
+		return imagen;
+	}
+
+
+
+
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
+
+
 
 
 	public administrador getAdministrador() {
@@ -136,29 +165,12 @@ public class productos {
 	}
 
 
+
+
+
 	public void setAdministrador(administrador administrador) {
 		this.administrador = administrador;
 	}
 
 
-	public List<carrito> getCarritos() {
-		return carritos;
-	}
-
-
-	public void setCarritos(List<carrito> carritos) {
-		this.carritos = carritos;
-	}
-
-
-	public List<detallePedido> getDetallesPedidos() {
-		return detallesPedidos;
-	}
-
-
-	public void setDetallesPedidos(List<detallePedido> detallesPedidos) {
-		this.detallesPedidos = detallesPedidos;
-	}
-
-  
 }

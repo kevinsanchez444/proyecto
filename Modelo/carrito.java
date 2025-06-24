@@ -1,6 +1,10 @@
 package com.example.demo.Modelo;
 
 
+
+
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,8 +26,8 @@ public class carrito {
     private Usuario idUsuario;
 
     @ManyToOne
-    @JoinColumn(name = "idProducto", referencedColumnName = "idProductos")
-    private productos idProducto;
+    @JoinColumn(name = "idProductos", referencedColumnName = "idProductos")
+    private productos idProductos;
 
     @Column(name="cantidad", nullable=false)
     private int cantidad;
@@ -34,41 +38,50 @@ public class carrito {
 		// TODO Auto-generated constructor stub
 	}
 
-	public carrito(Long idCarrito, Usuario idUsuario, productos idProducto, int cantidad) {
+
+	public carrito(Long idCarrito, Usuario idUsuario, productos idProductos, int cantidad) {
 		super();
 		this.idCarrito = idCarrito;
 		this.idUsuario = idUsuario;
-		this.idProducto = idProducto;
+		this.idProductos = idProductos;
 		this.cantidad = cantidad;
 	}
 
-	public Long getId() {
+
+	public Long getIdCarrito() {
 		return idCarrito;
 	}
 
-	public void setId(Long idCarrito) {
+
+	public void setIdCarrito(Long idCarrito) {
 		this.idCarrito = idCarrito;
 	}
+
 
 	public Usuario getIdUsuario() {
 		return idUsuario;
 	}
 
+
 	public void setIdUsuario(Usuario idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
-	public productos getIdProducto() {
-		return idProducto;
+
+	public productos getProductos() {
+		return idProductos;
 	}
 
-	public void setIdProducto(productos idProducto) {
-		this.idProducto = idProducto;
+
+	public void setProductos(productos productos) {
+		this.idProductos = productos;
 	}
+
 
 	public int getCantidad() {
 		return cantidad;
 	}
+
 
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;

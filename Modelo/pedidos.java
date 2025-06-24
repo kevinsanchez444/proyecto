@@ -4,6 +4,8 @@ package com.example.demo.Modelo;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +25,7 @@ public class pedidos {
 
     @ManyToOne
     @JoinColumn(name="cedula", referencedColumnName="cedula")
+    @JsonIgnore
     private Usuario idUsuario;
 
   
@@ -134,3 +137,4 @@ public class pedidos {
 	
 	
 }
+
