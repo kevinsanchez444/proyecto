@@ -1,9 +1,8 @@
 package com.example.demo.modelo;
 
+
 import java.time.LocalDateTime;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -15,7 +14,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 @Entity
 @Table(name="pedidos")
 public class pedidos {
@@ -25,9 +23,9 @@ public class pedidos {
 
     @ManyToOne
     @JoinColumn(name="cedula", referencedColumnName="cedula")
-    @JsonIgnore
     private usuario idUsuario;
 
+  
     @OneToMany(mappedBy = "idPedido", cascade = {CascadeType.ALL})
     private List<detallePedido> detallesPedidos;
 
@@ -49,84 +47,90 @@ public class pedidos {
     @Column(name="total", nullable=false)
     private int total;
 
-    public pedidos() {
-        super();
-    }
 
-    public pedidos(Long idPedidos, usuario idUsuario, productos idProducto, LocalDateTime fechaPedido, String direccion,
-                   String ciudad, String referencia, String estado, int total) {
-        super();
-        this.idPedidos = idPedidos;
-        this.idUsuario = idUsuario;
-        this.fechaPedido = fechaPedido;
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.referencia = referencia;
-        this.estado = estado;
-        this.total = total;
-    }
 
-    public Long getIdPedidos() {
-        return idPedidos;
-    }
+	public pedidos() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    public void setIdPedidos(Long idPedidos) {
-        this.idPedidos = idPedidos;
-    }
+	public pedidos(Long idPedidos, usuario idUsuario, productos idProducto, LocalDateTime fechaPedido, String direccion,
+			String ciudad, String referencia, String estado, int total) {
+		super();
+		this.idPedidos = idPedidos;
+		this.idUsuario = idUsuario;
+		this.fechaPedido = fechaPedido;
+		this.direccion = direccion;
+		this.ciudad = ciudad;
+		this.referencia = referencia;
+		this.estado = estado;
+		this.total = total;
+	}
 
-    public usuario getIdUsuario() {
-        return idUsuario;
-    }
+	public Long getIdPedidos() {
+		return idPedidos;
+	}
 
-    public void setIdUsuario(usuario idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+	public void setIdPedidos(Long idPedidos) {
+		this.idPedidos = idPedidos;
+	}
 
-    public LocalDateTime getFechaPedido() {
-        return fechaPedido;
-    }
+	public usuario getIdUsuario() {
+		return idUsuario;
+	}
 
-    public void setFechaPedido(LocalDateTime fechaPedido) {
-        this.fechaPedido = fechaPedido;
-    }
+	public void setIdUsuario(usuario idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
-    public String getDireccion() {
-        return direccion;
-    }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+	public LocalDateTime getFechaPedido() {
+		return fechaPedido;
+	}
 
-    public String getCiudad() {
-        return ciudad;
-    }
+	public void setFechaPedido(LocalDateTime fechaPedido) {
+		this.fechaPedido = fechaPedido;
+	}
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
+	public String getDireccion() {
+		return direccion;
+	}
 
-    public String getReferencia() {
-        return referencia;
-    }
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 
-    public void setReferencia(String referencia) {
-        this.referencia = referencia;
-    }
+	public String getCiudad() {
+		return ciudad;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public String getReferencia() {
+		return referencia;
+	}
 
-    public int getTotal() {
-        return total;
-    }
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
+	}
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	
+	
 }
