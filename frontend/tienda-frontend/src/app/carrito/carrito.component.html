@@ -1,0 +1,95 @@
+<h1 class="titulo">Carrito de Compras</h1>
+
+<!-- Muestra mensaje si el carrito está vacío -->
+<div *ngIf="carrito.length === 0"  class="container">
+  <p>🛒 El carrito está vacío, agregue productos</p>
+</div>
+
+<!-- Muestra los productos del carrito -->
+<div *ngIf="carrito.length > 0">
+  <div class="container" id="prodCarrito" *ngFor="let item of carrito; let i = index">
+    
+    <!-- Validación para que no falle si productos no está presente aún -->
+    <div *ngIf="item.productos">
+      <img [src]="item.productos.imagen" alt="Imagen del producto" class="product-image">
+
+      <div class="product-details">
+        <h3 class="product-name">{{ item.productos.nombre }}</h3>
+        <p class="product-price">Precio: ${{ item.productos.precio }}</p>
+
+        <p class="product-quantity">
+          <label [for]="'cantidad-' + i">Cantidad:</label>
+          <input type="number" [id]="'cantidad-' + i" [(ngModel)]="item.cantidad" (ngModelChange)="actualizarCantidad(item.idCarrito, item.cantidad)"   [max]="item.productos.cantidad"min="1" name="cantidad">
+        </p>
+
+        <p class="product-total">
+          <label>Total:</label>
+          <span>{{ item.productos.precio * item.cantidad }}</span>
+        </p>
+      </div>
+
+      <!-- Ícono de eliminar producto (opcional, puedes enlazarle un método) -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+           class="boton" viewBox="0 0 16 16" (click)="eliminarProductos(item.idCarrito)">
+
+        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 
+                 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 
+                 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 
+                 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 
+                 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 
+                 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+      </svg>
+    </div>
+
+  </div>
+</div>
+
+
+ <div class="container-2">
+  <h2>Resumen de la compra</h2>
+   <p class="product-total">
+            <label >Total:</label>
+              <span id="total">${{ totalCompra }}</span>
+        </p>
+    <div class="text-center mt-5">
+      <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#modalPedido">
+        <i class="bi bi-cart-plus-fill"></i> Generar Pedido
+      </button>
+    </div>
+</div>
+<div class="vaciarCarrito">
+  <button class="vaciar" (click)="vaciarCarrito(987654321)">Vaciar Carrito</button>
+</div>
+
+<div class="modal fade" id="modalPedido" tabindex="-1" aria-labelledby="modalPedidoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="modalPedidoLabel">Datos para el Pedido</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body">
+        <form (ngSubmit)="enviarPedido()" #formPedido="ngForm">
+          <div class="form-group mb-3">
+            <label>Dirección</label>
+            <input type="text" [(ngModel)]="direccion" name="direccion" class="form-control" required>
+          </div>
+          <div class="form-group mb-3">
+            <label>Ciudad</label>
+            <input type="text" [(ngModel)]="ciudad" name="ciudad" class="form-control" required>
+          </div>
+          <div class="form-group mb-3">
+            <label>Referencia</label>
+            <input type="text" [(ngModel)]="referencia" name="referencia" class="form-control" required>
+          </div>
+          <div *ngIf="mensaje" class="alert alert-info mt-2 text-center">
+            {{ mensaje }}
+          </div>
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success">Confirmar Pedido</button>
+          </div>
+        </form>
+ </div>
