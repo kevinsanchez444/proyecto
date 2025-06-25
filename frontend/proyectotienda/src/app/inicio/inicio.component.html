@@ -1,0 +1,20 @@
+<div class="container mt-5 seccion-productos">
+    <h2 class="text-center mb-4">Productos Disponibles</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let producto of productos">
+            <div class="card h-100">
+                <img [src]="'http://localhost:8080/' + producto.imagen" class="card-img-top" alt="{{producto.nombre}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ producto.nombre }}</h5>
+                    <p class="card-text">{{ producto.descripcion }}</p>
+                    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+                    <p><strong>Stock:</strong> {{ producto.cantidad }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

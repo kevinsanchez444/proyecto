@@ -1,0 +1,18 @@
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="recuadro-login">
+    <h2 class="text-center mb-3">Iniciar Sesión Administrador</h2>
+    <form (submit)="iniciarSesion(); $event.preventDefault()">
+      <div class="form-group">
+        <label>ID Administrador:</label>
+        <input type="number" [(ngModel)]="idAdministrador" name="idAdministrador" class="form-control" required>
+      </div>
+      <div class="form-group mt-2">
+        <label>Contraseña:</label>
+        <input type="password" [(ngModel)]="contrasena" name="contrasena" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3 w-100">Ingresar</button>
+    </form>
+  </div>
+</div>
+
+
